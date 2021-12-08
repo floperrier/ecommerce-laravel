@@ -9,14 +9,14 @@ class ProductController extends Controller
 {
     public function index() {
         $products = Product::all();
-        return view('products/index', [
+        return view('product/index', [
             'products' => $products
         ]);
     }
 
     public function show(Request $request) {
         $product = Product::find($request->id);
-        return view('products/show', [
+        return view('product/show', [
             'product' => $product
         ]);
     }

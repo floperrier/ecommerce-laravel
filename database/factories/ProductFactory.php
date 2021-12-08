@@ -19,6 +19,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomDigit(),
             'description' => $this->faker->paragraph(), // password
             'image' => $this->faker->imageUrl(640,480, null, false, $name, true),
+            'category_id' => $this->faker->numberBetween(1,4)
         ];
     }
 }

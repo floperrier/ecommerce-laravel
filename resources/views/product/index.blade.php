@@ -48,7 +48,7 @@
                                         src="{{ $product->image }}">
                                 </a>
                                 <div class="mt-4">
-                                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+                                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase"><a href="{{ route('category.show', ['id' => $product->category->id]) }}">{{ $product->category->name }}</a></h3>
                                     <h2 class="text-gray-900 title-font text-lg font-medium">{{ $product->name }}</h2>
                                     <p class="mt-1">{{ $product->price }} €</p>
                                 </div>

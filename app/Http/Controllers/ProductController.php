@@ -9,7 +9,6 @@ class ProductController extends Controller
 {
     public function index() {
         $products = Product::all();
-        $products = Product::search('qsdqsdqds')->get();
         return view('product/index', [
             'products' => $products
         ]);

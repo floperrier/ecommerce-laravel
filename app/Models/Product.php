@@ -10,4 +10,8 @@ class Product extends Model
 {
     use HasFactory;
     use Searchable;
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -13,11 +13,12 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->word();
         return [
-            'name' => $this->faker->word(),
+            'name' => $name,
             'price' => $this->faker->randomDigit(),
             'description' => $this->faker->paragraph(), // password
-            'image' => $this->faker->image(public_path('img'),640,480, null, false),
+            'image' => $this->faker->imageUrl(640,480, null, false, $name, true),
         ];
     }
 }

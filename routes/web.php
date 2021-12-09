@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Shop\CartController;
 use App\Models\Product;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,11 @@ Route::get('/product/{id}', [ ProductController::class, 'show'])->name('product.
 Route::get('/category/{id}', [ CategoryController::class, 'show'])->name('category.show');
 
 Route::get('/search', [ ProductController::class, 'search'])->name('search');
+
+Route::post('cart/add/{id}', [ CartController::class, 'add'])->name('cart.add');
+Route::get('cart', [ CartController::class, 'index'])->name('cart.index');
+Route::get('cart/remove/{id}', [ CartController::class, 'remove'])->name('cart.remove');
+Route::post('cart/update/{id}', [ CartController::class, 'updateQuantity'])->name('cart.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

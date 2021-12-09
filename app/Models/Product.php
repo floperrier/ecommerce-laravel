@@ -11,7 +11,13 @@ class Product extends Model
     use HasFactory;
     use Searchable;
 
+    private static $vatFactor = 1.2;
+
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    public function priceWithVAT() {
+        return number_format($this->price * self::$vatFactor, 2);
     }
 }

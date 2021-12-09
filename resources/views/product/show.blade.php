@@ -136,7 +136,7 @@
 
                     </div>
                     <div class="flex">
-                        <span class="title-font font-medium text-2xl text-gray-900">{{ $product->price }} €</span>
+                        <span class="title-font font-medium text-2xl text-gray-900">{{ $product->priceWithVAT() }} €</span>
                         <button form="add_item"
                             class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Ajouter
                             au panier</button>

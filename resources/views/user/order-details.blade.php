@@ -31,12 +31,11 @@
 
             <div class="flex justify-between border-b pb-8">
                 <div>
-                    <h1 class="font-semibold text-2xl">Order # {{ $order->id }}</h1>
+                    <h1 class="font-semibold text-2xl">Order # {{ $order->id }} - <span class="italic text-xl">{{ $order->total }}€</span></h1>
                     <h2>Passed on {{ $order->created_at }}</h2>
                 </div>
                 <h2 class="font-semibold text-2xl">{{ $order->details->count() }} items</h2>
             </div>
-
             <div class="flex mt-10 mb-5">
                 <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
                 <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Quantity
@@ -53,26 +52,26 @@
                         <div class="w-20">
                             <img class="h-24" src="{{ $item->product->image }}" alt="">
                         </div>
-                        <div class="flex flex-col justify-between ml-4 flex-grow">
+                        <div class="flex flex-col ml-4 flex-grow">
                             <a href="{{ route('product.show', ['id' => $item->product->id]) }}"><span
-                                    class="font-bold text-sm">{{ $item->product->name }}</span></a>
-                            <span class="text-red-500 text-xs">Apple</span>
+                                    class="font-bold text-xl">{{ $item->product->name }}</span></a>
+                            <span class="text-md"><a href="{{ route('category.show', ['id' => $item->product->category->id]) }}">{{ $item->product->category->name }}</a></span>
                         </div>
                     </div>
 
                     <div class="flex justify-center items-center w-1/5">
-                        <span class="text-center w-1/5 font-semibold text-sm">{{ $item->quantity }}</span>
+                        <span class="text-center w-1/5 font-semibold text-md">{{ $item->quantity }}</span>
                     </div>
-                    <span class="text-center w-1/5 font-semibold text-sm">{{ $item->product->price }}
+                    <span class="text-center w-1/5 font-semibold text-md">{{ $item->product->priceWithVAT() }}
                         €</span>
                     <span
-                        class="text-center w-1/5 font-semibold text-sm">{{ $item->price * $item->quantity }}
+                        class="text-center w-1/5 font-semibold text-md">{{ $item->product->priceWithVAT() * $item->quantity }}
                         €</span>
                 </div>
             @endforeach
 
 
-            <a href="{{ route('account') }}" class="flex font-semibold text-indigo-600 text-sm mt-10">
+            <a href="{{ route('account') }}" class="flex font-semibold text-indigo-600 text-md mt-10">
 
                 <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
                     <path
@@ -80,79 +79,6 @@
                 </svg>
                 Return on account page
             </a>
-        </div>
-
-    </div>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <h1 class="text-2xl font-bold">Order #{{ $order->id }}</h1>
-                    <h2 class="text-xl">{{ $order->total }}€</h2>
-                    <ul>
-                        @foreach ($order->details as $item)
-                            <h2>{{ $item->product->name }} - x{{ $item->quantity }}</h2>
-                        @endforeach
-                    </ul>
-                    {{-- <div class="overflow-x-auto">
-                        <table class="table w-full">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Quantity</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" class="checkbox">
-                                        </label>
-                                    </th>
-                                    <td>
-                                        <div class="flex items-center space-x-3">
-                                            <div class="avatar">
-                                                <div class="w-12 h-12 mask mask-squircle">
-                                                    <img src="/tailwind-css-component-profile-2@56w.png"
-                                                        alt="Avatar Tailwind CSS Component">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold">
-                                                    Hart Hagerty
-                                                </div>
-                                                <div class="text-sm opacity-50">
-                                                    United States
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Zemlak, Daniel and Leannon
-
-                                        <br>
-                                        <span class="badge badge-outline badge-sm">Desktop Support Technician</span>
-                                    </td>
-                                    <td>Purple</td>
-                                    <th>
-                                        <button class="btn btn-ghost btn-xs">details</button>
-                                    </th>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Job</th>
-                                    <th>Favorite Color</th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div> --}}
-                </div>
-            </div>
         </div>
     </div>
 </x-app-layout>

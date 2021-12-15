@@ -83,6 +83,18 @@ services:
             - '/dev/shm:/dev/shm'
         networks:
             - sail
+    myadmin:
+        image: 'phpmyadmin:latest'
+        ports:
+          - 8890:80
+        environment:
+          MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+        links:
+          - "mysql:db"
+        depends_on:
+          - mysql
+        networks:
+          - sail
 networks:
     sail:
         driver: bridge

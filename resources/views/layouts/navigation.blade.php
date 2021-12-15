@@ -79,7 +79,7 @@
                                 @csrf
 
                                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                                    this.closest('form').submit();">
+                                                                        this.closest('form').submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
@@ -106,19 +106,18 @@
 
                 <!-- Searchbar -->
                 <div class="flex items-center justify-center">
-                        <form action="{{ route('search') }}" class="flex border-2 rounded">
-                            <input type="text"
-                                class="focus:outline-none focus:ring-transparent border-none px-2 py-1 text-sm"
-                                placeholder="Search..."
-                                name="search">
-                            <button class="flex items-center justify-center px-4 border-l">
-                                <svg class="w-4 h-4 text-gray-600" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path
-                                        d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
-                                </svg>
-                            </button>
-                        </form>
+                    <form action="{{ route('search') }}" class="flex border-2 rounded">
+                        <input type="text"
+                            class="focus:outline-none focus:ring-transparent border-none px-2 py-1 text-sm"
+                            placeholder="Search..." name="search">
+                        <button class="flex items-center justify-center px-4 border-l">
+                            <svg class="w-4 h-4 text-gray-600" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+                            </svg>
+                        </button>
+                    </form>
                 </div>
                 @guest
                     <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
@@ -128,6 +127,11 @@
                         {{ __('Register') }}
                     </x-nav-link>
                 @endguest
+                <x-nav-link :href="route('cart.index')" :active="request()->routeIs('login')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                      </svg>
+                </x-nav-link>
             </div>
 
         </div>
@@ -157,7 +161,7 @@
                         @csrf
 
                         <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                                            this.closest('form').submit();">
+                                                                this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
                     </form>

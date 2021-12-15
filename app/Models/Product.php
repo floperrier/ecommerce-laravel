@@ -20,4 +20,15 @@ class Product extends Model
     public function priceWithVAT() {
         return number_format($this->price * self::$vatFactor, 2);
     }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        unset($array['created_at']);
+        unset($array['updated_at']);
+        unset($array['image']);
+        unset($array['category_id']);
+        $array['category'] = $this->category->name;
+        return $array;
+    }
 }

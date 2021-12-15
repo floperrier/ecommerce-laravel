@@ -136,8 +136,8 @@
                         <span>Total cost</span>
                         <span>{{ $totalPrice }} €</span>
                     </div>
-                    <button
-                        class="bg-indigo-500 font-semibold hover:bg-indigo-600 mt-4 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                    <a href="{{ route('checkout') }}"><button
+                        class="bg-indigo-500 font-semibold hover:bg-indigo-600 mt-4 py-3 text-sm text-white uppercase w-full">Checkout</button></a>
                 </div>
             </div>
 
